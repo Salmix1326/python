@@ -199,7 +199,11 @@ class Car:
         print(f"Car is gonna highway with {self.speed} km/h")
 
     def check_speed(self):
-        print("Speed is OK")
+        if 200 >= self.speed >= 20:
+            return "Speed is OK"
+
+        else:
+            return "Unacceptable speed"
 
 
 class Bicycle:
@@ -210,7 +214,11 @@ class Bicycle:
         print(f"Bicycle is gonna road with {self.speed} km/h")
 
     def check_speed(self):
-        print("Speed is OK")
+        if 30 >= self.speed >= 10:
+            return "Speed is OK"
+
+        else:
+            return "Unacceptable speed"
 
 class Boat:
     def __init__(self, speed):
@@ -220,7 +228,11 @@ class Boat:
         print(f"Boat is sailing with {self.speed} km/h")
 
     def check_speed(self):
-        print("Speed is OK")
+        if 50 >= self.speed >= 0:
+            return "Speed is OK"
+
+        else:
+            return "Unacceptable speed"
 
 
 def create_vehicle():
@@ -267,11 +279,14 @@ def create_vehicle():
 
 create_vehicle()
 
-car1 = Car(100)
-car2 = Car(50)
-bicycle1 = Bicycle(15)
-bicycle2 = Bicycle(25)
-boat1 = Boat(35)
+car1 = Car(190)
+car2 = Car(250)
+bicycle1 = Bicycle(35)
+bicycle2 = Bicycle(20)
+boat1 = Boat(60)
 boat2 = Boat(20)
 
 vehicles = [car1, car2, bicycle1, bicycle2, boat1, boat2]
+
+for vehicle in vehicles:
+    print(f"{type(vehicle)}. Speed: {vehicle.speed}. {vehicle.check_speed()}")
