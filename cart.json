@@ -1,0 +1,9 @@
+{
+    "John": {
+        "items": {
+            "banana": 15,
+            "mango": 25
+        },
+        "total": 40
+    }
+}

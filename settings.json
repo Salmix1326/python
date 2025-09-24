@@ -1,0 +1,10 @@
+{
+    "background_color": "gray",
+    "image_size": 200,
+    "buttons_color": "red",
+    "buttons_location": [
+        100,
+        50
+    ],
+    "instruction": "Some text for user"
+}
