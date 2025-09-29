@@ -1,0 +1,26 @@
+{
+    "John": [
+        {
+            "name": "apple",
+            "price": 20.0,
+            "brand": "brand1"
+        },
+        {
+            "name": "banana",
+            "price": 40.0,
+            "brand": "brand2"
+        }
+    ],
+    "Maria": [
+        {
+            "name": "car",
+            "price": 200000.0,
+            "brand": "brand3"
+        },
+        {
+            "name": "housr",
+            "price": 3000000.0,
+            "brand": "brand4"
+        }
+    ]
+}
