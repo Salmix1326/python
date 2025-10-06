@@ -11,29 +11,18 @@
 # ● port – 8000
 # uvicorn main:app --port 8000 –host localhost --reload
 # Напишіть клієнта який робить запит на сервер
-from fastapi import FastAPI
+# from fastapi import FastAPI
+#
+#
+# app = FastAPI()
 
-
-app = FastAPI()
-
-@app.post("/hello")
-def welcome():
-    return {"message": "Привіт з сервера!"}
-
-
-
-
-
-
-
-
-
-
-
-
+# @app.post("/hello")
+# def welcome():
+#     return {"message": "Привіт з сервера!"}
 
 
 # Завдання 2
+#===================================================
 # Напишіть сервер1:
 # ● шлях – /greeting
 # ● метод – GET
@@ -42,11 +31,20 @@ def welcome():
 # Напишіть сервер2:
 # ● шлях – /greeting
 # ● метод – GET
-# ● результат – {"respond": "Привіт з сервера1"}
+# ● результат – {"respond": "Привіт з сервера2"}
 # ● порт – 8001
 # Запустіть обида сервери на localhost
-# Напишіть клієнта який робить запита на обидва
-# сервери
+# Напишіть клієнта який робить запита на обидва сервери
+from fastapi import FastAPI
+
+
+app = FastAPI()
+
+@app.get("/greeting")
+def hi():
+    return {"respond": "Привіт з сервера1"}
+
+
 
 
 
