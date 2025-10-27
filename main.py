@@ -100,7 +100,7 @@ def delete_row_sql(table_name, row_id):
 
 # ▷ вивести інформацію про всі навчальні групи
 def report_all_groups():
-    sql = text("SELECT * FROM groups")
+    sql = text("SELECT * FROM groups_table")
 
     try:
         result = session.execute(sql)
@@ -149,9 +149,9 @@ def report_teachers_by_group(group_name):
         SELECT t.surname, t.name
         FROM groupslectures gl
         JOIN lectures l ON l.id = gl.lectureid
-        JOIN groups g ON g.id = gl.groupid
+        JOIN groups_table gt ON gt.id = gl.groupid
         JOIN teachers t ON t.id = l.teacherid
-        WHERE g.name = :group_name
+        WHERE gt.name = :group_name
     """)
 
     try:
@@ -171,7 +171,7 @@ def report_departments_and_groups():
         SELECT d.name AS department_name, g.name AS group_name
         FROM departments d
         JOIN faculties f ON f.departmentid = d.id
-        JOIN groups g ON g.departmentid = d.id
+        JOIN groups_table gt ON gt.departmentid = d.id
         ORDER BY d.name
     """)
 
@@ -192,7 +192,7 @@ def report_department_with_max_groups():
         SELECT d.name, COUNT(g.id) AS group_count
         FROM departments d
         JOIN faculties f ON f.departmentid = d.id
-        JOIN groups g ON g.departmentid = d.id
+        JOIN groups_table gt ON gt.departmentid = d.id
         GROUP BY d.name
         ORDER BY group_count DESC
         LIMIT 1
@@ -214,10 +214,10 @@ def report_department_with_max_groups():
 # ▷ відобразити кафедру з мінімальною кількістю груп
 def report_department_with_min_groups():
     sql = text("""
-        SELECT d.name, COUNT(g.id) AS group_count
+        SELECT d.name, COUNT(gt.id) AS group_count
         FROM departments d
         JOIN faculties f ON f.departmentid = d.id
-        JOIN groups g ON g.departmentid = d.id
+        JOIN groups_table gt ON gt.departmentid = d.id
         GROUP BY d.name
         ORDER BY group_count ASC
         LIMIT 1
@@ -263,7 +263,7 @@ def report_departments_by_subject(subject_name):
         SELECT DISTINCT d.name AS department_name
         FROM departments d
         JOIN faculties f ON f.departmentid = d.id
-        JOIN groups g ON g.departmentid = d.id
+        JOIN groups_table gt ON gt.departmentid = d.id
         JOIN groupslectures gl ON gl.groupid = g.id
         JOIN lectures l ON l.id = gl.lectureid
         JOIN subjects s ON s.id = l.subjectid
@@ -284,9 +284,9 @@ def report_departments_by_subject(subject_name):
 # ▷ вивести назви груп, що належать до конкретного факультету
 def report_groups_by_faculty(faculty_name):
     sql = text("""
-        SELECT g.name AS group_name
-        FROM groups g
-        JOIN departments d ON d.id = g.departmentid
+        SELECT gt.name AS group_name
+        FROM groups_table gt
+        JOIN departments d ON d.id = gt.departmentid
         JOIN faculties f ON f.departmentid = d.id
         WHERE f.name = :faculty_name
     """)
@@ -374,3 +374,12 @@ def report_subjects_with_most_lectures():
     except Exception as e:
         print(f"Error generating report for subjects with most lectures: {e}")
 
+
+# Testing the functions
+
+# insert_row_sql('departments', {'name': 'New Department', 'financing': 10000, 'facultyid': 5})
+# update_row_sql('departments', 1, {'name': 'Updated Department', 'financing': 20000})
+# delete_row_sql('departments', 6)
+
+# report_all_groups()
+# report_subjects_with_least_lectures()
