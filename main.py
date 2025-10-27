@@ -376,11 +376,10 @@ def report_subjects_with_most_lectures():
 
 
 # Testing the functions
-
+# =====================================================================================================
 # insert_row_sql('departments', {'name': 'New Department', 'financing': 10000, 'facultyid': 5})
 # update_row_sql('departments', 1, {'name': 'Updated Department', 'financing': 20000})
 # delete_row_sql('departments', 6)
 
 # report_all_groups()
 # report_subjects_with_least_lectures()
-#
