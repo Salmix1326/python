@@ -383,3 +383,4 @@ def report_subjects_with_most_lectures():
 
 # report_all_groups()
 # report_subjects_with_least_lectures()
+#
