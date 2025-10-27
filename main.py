@@ -374,4 +374,3 @@ def report_subjects_with_most_lectures():
     except Exception as e:
         print(f"Error generating report for subjects with most lectures: {e}")
 
-
